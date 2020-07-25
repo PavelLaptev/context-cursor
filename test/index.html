@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Webpack 4 Typescript boilerplate</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>" />
+</head>
+
+<body>
+  <h1>Hello awesome cursor</h1>
+  <div className="btn-wrap">
+    <button data-ccursor>Hello Btn</button>
+    <button data-ccursor>Btn</button>
+  </div>
+  <button data-ccursor>Hello Btn</button>
+  <a href="##" data-ccursor>
+    This is a link
+  </a>
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+</body>
+
+</html>

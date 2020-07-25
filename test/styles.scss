@@ -1,0 +1,26 @@
+button {
+  background: rgb(255, 241, 114);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  align-self: flex-start;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  border: 1px solid;
+  padding: 40px;
+}
+
+.btn-wrap {
+  display: flex;
+}
+
+a {
+  display: inline-block;
+  align-self: flex-start;
+}
