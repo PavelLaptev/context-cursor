@@ -23,6 +23,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.svg$/,
+        use: ["file-loader", "svg-transform-loader"],
+      },
+      {
         test: /\.ts?$/,
         use: "ts-loader",
         exclude: /node_modules/,

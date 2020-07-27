@@ -10,16 +10,21 @@
 </head>
 
 <body>
-  <h1>Hello awesome cursor</h1>
-  <div className="btn-wrap">
-    <button data-ccursor>Hello Btn</button>
-    <button data-ccursor>Btn</button>
+  <div class="wrap">
+    <h1>Hello awesome cursor</h1>
+    <div class="btnWrap">
+      <button class="btn-primary" data-ccursor><span>Button</span></button>
+      <button class="btn-primary" data-ccursor><span>Another Button</span></button>
+      <button class="btn-transparent" data-ccursor><i class="btn-icon icon-github"></i></button>
+    </div>
+    <button class="btn-primary" data-ccursor><span>Hello Btn</span></button>
+    <a href="##" data-ccursor="noPadding">
+      This is a link
+    </a>
   </div>
-  <button data-ccursor>Hello Btn</button>
-  <a href="##" data-ccursor>
-    This is a link
-  </a>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 
 </html>
+
+<!-- type: noParallax, noPadding, hover, ghost -->

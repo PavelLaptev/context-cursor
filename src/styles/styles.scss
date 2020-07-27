@@ -1,6 +1,6 @@
 :root {
-  --main-cursor-clr: rgb(0, 0, 0, 1);
-  --main-cursor-hover-clr: rgb(0, 0, 0, 0.2);
+  --main-cursor-clr: rgb(0, 0, 0, 0.3);
+  --main-cursor-hover-clr: rgb(0, 0, 0, 0.1);
 }
 
 body {
@@ -13,7 +13,7 @@ body {
   z-index: 9999;
   pointer-events: none;
   position: absolute;
-  border-radius: 30px;
+  border-radius: 20px;
   background-color: var(--main-cursor-clr);
   transform-origin: center center;
 }

@@ -1,74 +1,26 @@
 import { addCursor, setStyles } from "./utils";
-import { TweenLite } from "gsap";
+import { contextMode } from "./modes";
+import propNames from "./propNames";
 
-interface CProps {
-  name?: string;
-  radius?: number;
-}
+const contextCursor = (props?: CProps) => {
+  props = {
+    context: {
+      radius: props.context.radius || 20,
+      name: props.context.name || "hello",
+    },
+  };
 
-const defaultProps: CProps = {
-  name: "Title",
-  radius: 10,
-};
-
-const contextCursor = (props: CProps = defaultProps) => {
-  document.body.requestPointerLock();
   setStyles();
-  const cCursor = addCursor(props.radius);
+  const cCursor = addCursor(props);
   let interactElements: NodeListOf<Element>;
 
   window.onload = () => {
-    interactElements = document.querySelectorAll("[data-ccursor]");
-    let isHovered = false;
+    interactElements = document.querySelectorAll(`[${propNames.dataAttr}]`);
 
-    const moveCursor = (e: globalThis.MouseEvent) => {
-      // console.log(e.clientX - props.radius / 2);
-      if (!isHovered) {
-        TweenLite.to(cCursor, 0.2, {
-          x: e.clientX - props.radius / 2,
-          y: e.clientY - props.radius / 2,
-        });
-      }
-    };
-
-    const handleMouseOver = (e: globalThis.MouseEvent) => {
-      const cursorTarget = e.target as HTMLElement;
-      isHovered = true;
-      TweenLite.to(cCursor, 0.2, {
-        x: cursorTarget.getBoundingClientRect().left,
-        y: cursorTarget.getBoundingClientRect().top,
-        borderRadius: window.getComputedStyle(cursorTarget).borderRadius,
-        width: cursorTarget.clientWidth,
-        height: cursorTarget.clientHeight,
-      });
-    };
-
-    const handleMouseOut = (e: Event) => {
-      isHovered = false;
-      TweenLite.to(cCursor, 0.2, {
-        width: props.radius,
-        height: props.radius,
-      });
-    };
-
-    document.addEventListener("mousemove", (e) => {
-      moveCursor(e);
-    });
-
-    interactElements.forEach((item) => {
-      item.addEventListener("mouseover", (e) => {
-        handleMouseOver(e as globalThis.MouseEvent);
-      });
-    });
-
-    interactElements.forEach((item) => {
-      item.addEventListener("mouseout", (e) => {
-        handleMouseOut(e as globalThis.MouseEvent);
-      });
-    });
+    contextMode(cCursor, props, interactElements);
   };
 
-  console.log(`Hedco ${props.name}`);
+  console.log(props.context.name);
 };
 
 export default contextCursor;
