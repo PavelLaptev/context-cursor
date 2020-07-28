@@ -14,28 +14,36 @@ const contextMode = (
   const padding: number = 12;
   let cursorTarget: HTMLElement = null;
 
-  const detectMouseDirection = (e: MouseEvent, cursorTarget: HTMLElement) => {
-    const relativePos = e.clientX - cursorTarget.offsetLeft;
-    const shiftindex = cursorTarget.clientWidth / relativePos;
-    console.log(shiftindex);
-    moveIndex.left = shiftindex;
-    // if (e.movementX > 0) {
-    //   moveIndex.left = shiftindex;
-    //   return "left";
-    // } else {
-    //   return "right";
-    // }
-  };
-
-  let correctI = 1;
+  // let correctI = 1;
   const moveCursor = (e: globalThis.MouseEvent) => {
-    const relativePos = e.clientX - cursorTarget.offsetLeft;
-    ++correctI;
-    console.log(Math.sin(relativePos * correctI));
+    const getMoveIndex = (
+      eventDirection: number,
+      elPosition: number,
+      elSize: number
+    ) => {
+      let relativePos = eventDirection - elPosition;
+      return (relativePos - elSize / 2) / 15;
+    };
+
+    // console.log(relativePos - elEnd);
+    // console.log(getMoveIndex(e.clientX, cursorTarget.offsetLeft, cursorTarget.clientWidth));
     if (!isHovered) {
       TweenLite.to(cursor, 0.2, {
         x: e.clientX - props.context.radius / 2,
         y: e.clientY - props.context.radius / 2,
+      });
+    } else {
+      TweenLite.to(cursor, 0.01, {
+        left: getMoveIndex(
+          e.clientX,
+          cursorTarget.offsetLeft,
+          cursorTarget.clientWidth
+        ),
+        top: getMoveIndex(
+          e.clientY,
+          cursorTarget.offsetTop,
+          cursorTarget.clientHeight
+        ),
       });
     }
   };
