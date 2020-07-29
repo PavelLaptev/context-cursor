@@ -4,10 +4,9 @@ import propNames from "./propNames";
 
 const contextCursor = (props?: CProps) => {
   props = {
-    context: {
-      radius: props.context.radius || 20,
-      name: props.context.name || "hello",
-    },
+    radius: props.radius || 20,
+    name: props.name || "hello",
+    parallaxIndex: props.parallaxIndex || 16,
   };
 
   setStyles();
@@ -20,7 +19,7 @@ const contextCursor = (props?: CProps) => {
     contextMode(cCursor, props, interactElements);
   };
 
-  console.log(props.context.name);
+  console.log(props.name);
 };
 
 export default contextCursor;

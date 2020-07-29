@@ -1,5 +1,5 @@
 import { TweenLite } from "gsap";
-import { getMoveIndex } from "../utils";
+import { getMoveIndex, isElHasProperty } from "../utils";
 import propNames from "../propNames";
 
 const contextMode = (
@@ -8,94 +8,97 @@ const contextMode = (
   interactElements: NodeListOf<Element>
 ) => {
   let isHovered: boolean = false;
-  let moveIndex = {
-    left: 0,
-    top: 0,
-  };
   const padding: number = 12;
   let cursorTarget: HTMLElement = null;
+  const timeTransition = 0.2;
   const parallaxSpeed = {
-    cursor: 16,
-    target: 20,
+    cursor: props.parallaxIndex,
+    target: props.parallaxIndex * 1.5,
   };
 
   const moveCursor = (e: globalThis.MouseEvent) => {
     if (!isHovered) {
-      TweenLite.to(cursor, 0.2, {
-        x: e.clientX - props.context.radius / 2,
-        y: e.clientY - props.context.radius / 2,
+      TweenLite.to(cursor, timeTransition, {
+        x: e.clientX - props.radius / 2,
+        y: e.clientY - props.radius / 2,
       });
     } else {
-      TweenLite.to(cursor, 0.0, {
-        left: getMoveIndex(
-          e.clientX,
-          cursorTarget.offsetLeft,
-          cursorTarget.clientWidth,
-          parallaxSpeed.cursor
-        ),
-        top: getMoveIndex(
-          e.clientY,
-          cursorTarget.offsetTop,
-          cursorTarget.clientHeight,
-          parallaxSpeed.cursor
-        ),
+      TweenLite.to(cursor, timeTransition, {
+        x:
+          cursorTarget.getBoundingClientRect().left -
+          (isElHasProperty(cursorTarget, propNames.noPadding)
+            ? null
+            : padding / 2) +
+          (isElHasProperty(cursorTarget, propNames.noParallax)
+            ? 0
+            : (e.clientX -
+                cursorTarget.offsetLeft -
+                cursorTarget.clientWidth / 2) /
+              parallaxSpeed.cursor),
+        y:
+          cursorTarget.getBoundingClientRect().top -
+          (isElHasProperty(cursorTarget, propNames.noPadding)
+            ? null
+            : padding / 2) +
+          (isElHasProperty(cursorTarget, propNames.noParallax)
+            ? 0
+            : (e.clientY -
+                cursorTarget.offsetTop -
+                cursorTarget.clientHeight / 2) /
+              parallaxSpeed.cursor),
       });
-      TweenLite.to(cursorTarget, 0.2, {
-        x: -getMoveIndex(
-          e.clientX,
-          cursorTarget.offsetLeft,
-          cursorTarget.clientWidth,
-          parallaxSpeed.target
-        ),
-        y: -getMoveIndex(
-          e.clientY,
-          cursorTarget.offsetTop,
-          cursorTarget.clientHeight,
-          parallaxSpeed.target
-        ),
-      });
+      if (!isElHasProperty(cursorTarget, propNames.noParallax)) {
+        TweenLite.to(cursorTarget, timeTransition, {
+          x: -getMoveIndex(
+            e.clientX,
+            cursorTarget.offsetLeft,
+            cursorTarget.clientWidth,
+            parallaxSpeed.target
+          ),
+          y: -getMoveIndex(
+            e.clientY,
+            cursorTarget.offsetTop,
+            cursorTarget.clientHeight,
+            parallaxSpeed.target
+          ),
+        });
+      }
     }
   };
 
   const handleMouseOver = (e: globalThis.MouseEvent) => {
     isHovered = true;
     cursorTarget = e.target as HTMLElement;
-    const isNoPadding = cursorTarget
-      .getAttribute(propNames.dataAttr)
-      .includes(propNames.noPadding);
     const borderRadius = Number(
       window.getComputedStyle(cursorTarget).borderRadius.slice(0, -2) as any
     );
 
-    TweenLite.to(cursor, 0.2, {
-      x:
-        cursorTarget.getBoundingClientRect().left -
-        (isNoPadding ? null : padding / 2),
-      y:
-        cursorTarget.getBoundingClientRect().top -
-        (isNoPadding ? null : padding / 2),
-      borderRadius: borderRadius * (isNoPadding ? 1 : 1.5),
-      width: cursorTarget.clientWidth + (isNoPadding ? null : padding),
-      height: cursorTarget.clientHeight + (isNoPadding ? null : padding),
+    cursor.classList.add("c-cursor_active");
+
+    TweenLite.to(cursor, timeTransition, {
+      borderRadius:
+        borderRadius *
+        (isElHasProperty(cursorTarget, propNames.noPadding) ? 1 : 1.5),
+      width:
+        cursorTarget.clientWidth +
+        (isElHasProperty(cursorTarget, propNames.noPadding) ? null : padding),
+      height:
+        cursorTarget.clientHeight +
+        (isElHasProperty(cursorTarget, propNames.noPadding) ? null : padding),
       backgroundColor: "var(--main-cursor-hover-clr)",
     });
   };
 
   const handleMouseOut = (e: MouseEvent) => {
     isHovered = false;
-    moveIndex = {
-      left: 0,
-      top: 0,
-    };
-    TweenLite.to(cursor, 0.2, {
-      width: props.context.radius,
-      height: props.context.radius,
+    cursor.classList.remove("c-cursor_active");
+    TweenLite.to(cursor, timeTransition, {
+      width: props.radius,
+      height: props.radius,
       backgroundColor: "var(--main-cursor-clr)",
       borderRadius: "100px",
-      left: 0,
-      top: 0,
     });
-    TweenLite.to(cursorTarget, 0.2, {
+    TweenLite.to(cursorTarget, timeTransition, {
       x: 0,
       y: 0,
     });

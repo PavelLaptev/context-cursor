@@ -43,6 +43,9 @@ a {
     display: inline-block;
     width: 28px;
     height: 28px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     // background-color: rgba($color: #000000, $alpha: 0.2);
   }
   &-primary {
@@ -58,6 +61,9 @@ a {
 .icon {
   &-github {
     background-image: url("./assets/gh-icon.svg");
-    background-size: cover;
+  }
+  &-npm {
+    width: 74px;
+    background-image: url("./assets/npm-icon.svg");
   }
 }

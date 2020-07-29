@@ -1,6 +1,5 @@
 declare interface CProps {
-  context?: {
-    radius?: number;
-    name?: string;
-  };
+  radius?: number;
+  name?: string;
+  parallaxIndex?: number;
 }

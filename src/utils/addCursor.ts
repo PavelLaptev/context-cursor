@@ -1,9 +1,9 @@
 const addCursor = (props: CProps) => {
-  if (props.context) {
+  if (props) {
     const contextCursor = document.createElement("div");
     contextCursor.setAttribute(
       "style",
-      `width: ${props.context.radius}px; height: ${props.context.radius}px;`
+      `width: ${props.radius}px; height: ${props.radius}px;`
     );
     contextCursor.setAttribute("class", "c-cursor");
     document.body.prepend(contextCursor);
