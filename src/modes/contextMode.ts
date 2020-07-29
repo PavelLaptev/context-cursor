@@ -1,4 +1,5 @@
 import { TweenLite } from "gsap";
+import { getMoveIndex } from "../utils";
 import propNames from "../propNames";
 
 const contextMode = (
@@ -13,36 +14,44 @@ const contextMode = (
   };
   const padding: number = 12;
   let cursorTarget: HTMLElement = null;
+  const parallaxSpeed = {
+    cursor: 16,
+    target: 20,
+  };
 
-  // let correctI = 1;
   const moveCursor = (e: globalThis.MouseEvent) => {
-    const getMoveIndex = (
-      eventDirection: number,
-      elPosition: number,
-      elSize: number
-    ) => {
-      let relativePos = eventDirection - elPosition;
-      return (relativePos - elSize / 2) / 15;
-    };
-
-    // console.log(relativePos - elEnd);
-    // console.log(getMoveIndex(e.clientX, cursorTarget.offsetLeft, cursorTarget.clientWidth));
     if (!isHovered) {
       TweenLite.to(cursor, 0.2, {
         x: e.clientX - props.context.radius / 2,
         y: e.clientY - props.context.radius / 2,
       });
     } else {
-      TweenLite.to(cursor, 0.01, {
+      TweenLite.to(cursor, 0.0, {
         left: getMoveIndex(
           e.clientX,
           cursorTarget.offsetLeft,
-          cursorTarget.clientWidth
+          cursorTarget.clientWidth,
+          parallaxSpeed.cursor
         ),
         top: getMoveIndex(
           e.clientY,
           cursorTarget.offsetTop,
-          cursorTarget.clientHeight
+          cursorTarget.clientHeight,
+          parallaxSpeed.cursor
+        ),
+      });
+      TweenLite.to(cursorTarget, 0.2, {
+        x: -getMoveIndex(
+          e.clientX,
+          cursorTarget.offsetLeft,
+          cursorTarget.clientWidth,
+          parallaxSpeed.target
+        ),
+        y: -getMoveIndex(
+          e.clientY,
+          cursorTarget.offsetTop,
+          cursorTarget.clientHeight,
+          parallaxSpeed.target
         ),
       });
     }
@@ -72,7 +81,7 @@ const contextMode = (
     });
   };
 
-  const handleMouseOut = (e: Event) => {
+  const handleMouseOut = (e: MouseEvent) => {
     isHovered = false;
     moveIndex = {
       left: 0,
@@ -85,6 +94,10 @@ const contextMode = (
       borderRadius: "100px",
       left: 0,
       top: 0,
+    });
+    TweenLite.to(cursorTarget, 0.2, {
+      x: 0,
+      y: 0,
     });
   };
 
