@@ -1,5 +1,6 @@
 declare interface CProps {
   radius?: number;
-  name?: string;
+  transitionSpeed?: number;
   parallaxIndex?: number;
+  hoverPadding?: number;
 }

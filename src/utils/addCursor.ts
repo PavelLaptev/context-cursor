@@ -3,7 +3,7 @@ const addCursor = (props: CProps) => {
     const contextCursor = document.createElement("div");
     contextCursor.setAttribute(
       "style",
-      `width: ${props.radius}px; height: ${props.radius}px;`
+      `transform: translate(-200px, -200px); height: ${props.radius}px; width: ${props.radius}px;`
     );
     contextCursor.setAttribute("class", "c-cursor");
     document.body.prepend(contextCursor);

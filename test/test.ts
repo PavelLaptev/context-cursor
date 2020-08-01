@@ -1,4 +1,4 @@
 import "./styles.scss";
-import customCursor from "../src";
+import contextCursor from "../src";
 
-customCursor({ name: "yo!" });
+contextCursor();

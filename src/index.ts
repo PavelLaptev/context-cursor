@@ -2,11 +2,12 @@ import { addCursor, setStyles } from "./utils";
 import { contextMode } from "./modes";
 import propNames from "./propNames";
 
-const contextCursor = (props?: CProps) => {
+const contextCursor = (props: CProps = {}) => {
   props = {
     radius: props.radius || 20,
-    name: props.name || "hello",
+    transitionSpeed: props.transitionSpeed || 0.2,
     parallaxIndex: props.parallaxIndex || 16,
+    hoverPadding: props.hoverPadding || 6,
   };
 
   setStyles();
@@ -18,8 +19,6 @@ const contextCursor = (props?: CProps) => {
 
     contextMode(cCursor, props, interactElements);
   };
-
-  console.log(props.name);
 };
 
 export default contextCursor;
