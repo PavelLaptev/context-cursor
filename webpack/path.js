@@ -1,9 +1,9 @@
 const prod_Path = "../lib";
 const src_Path = "src";
-const test_Path = "test";
+const preview_Path = "preview";
 
 module.exports = {
   prod_Path,
   src_Path,
-  test_Path,
+  preview_Path,
 };

@@ -2,12 +2,12 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const { prod_Path, test_Path } = require("./path");
+const { prod_Path, preview_Path } = require("./path");
 const { selectedPreprocessor } = require("./loader");
 
 module.exports = {
   entry: {
-    main: "./" + test_Path + "/test.ts",
+    main: "./" + preview_Path + "/test.ts",
   },
   resolve: {
     extensions: [".ts", ".js"],
@@ -67,7 +67,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: false,
-      template: "./" + test_Path + "/index.html",
+      template: "./" + preview_Path + "/index.html",
       filename: "index.html",
     }),
   ],
