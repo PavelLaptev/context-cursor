@@ -4,7 +4,7 @@ const WebpackMd5Hash = require("webpack-md5-hash");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const { prod_Path, src_Path, test_Path } = require("./path");
+const { prod_Path, src_Path, preview_Path } = require("./path");
 const { selectedPreprocessor } = require("./loader");
 
 module.exports = {
@@ -55,8 +55,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: "./" + test_Path + "/index.html",
-      filename: "index.html",
+      template: "./" + preview_Path + "/index.html",
+      filename: "../index.html",
     }),
     new WebpackMd5Hash(),
   ],
