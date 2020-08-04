@@ -1,4 +1,4 @@
-declare interface CProps {
+interface CProps {
   radius?: number;
   transitionSpeed?: number;
   parallaxIndex?: number;

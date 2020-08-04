@@ -11,7 +11,7 @@ const contextCursor = (props: CProps = {}) => {
   };
 
   setStyles();
-  const cCursor = addCursor(props);
+  const cCursor = addCursor(props) as HTMLElement;
   let interactElements: NodeListOf<Element>;
 
   window.onload = () => {

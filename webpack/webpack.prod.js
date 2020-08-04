@@ -9,18 +9,22 @@ const { selectedPreprocessor } = require("./loader");
 
 module.exports = {
   entry: {
-    main: "./" + src_Path + "/index.ts",
+    main: "./" + preview_Path + "/test.ts",
   },
   resolve: {
     extensions: [".ts", ".js"],
   },
   output: {
     path: path.resolve(__dirname, prod_Path),
-    filename: "[name].js",
+    filename: "[name].[chunkhash].js",
   },
   //devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.svg$/,
+        use: ["file-loader", "svg-transform-loader"],
+      },
       {
         test: /\.ts?$/,
         use: "ts-loader",
