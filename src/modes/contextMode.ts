@@ -19,6 +19,10 @@ const contextMode = (
   let cursorTarget: HTMLElement = null;
 
   const moveCursor = (e: globalThis.MouseEvent) => {
+    const borderRadius = Number(
+      window.getComputedStyle(cursorTarget).borderRadius.slice(0, -2) as any
+    );
+
     if (!isHovered) {
       TweenLite.to(cursor, props.transitionSpeed, {
         x: e.clientX - props.radius / 2,
@@ -92,6 +96,20 @@ const contextMode = (
                   cursorTarget.offsetTop -
                   cursorTarget.clientHeight / 2) /
                 parallaxSpeed.cursor),
+          borderRadius:
+            borderRadius *
+            (isElHasProperty(cursorTarget, propNames.noPadding) ? 1 : 1.5),
+          width:
+            cursorTarget.clientWidth +
+            (isElHasProperty(cursorTarget, propNames.noPadding)
+              ? null
+              : props.hoverPadding * 2),
+          height:
+            cursorTarget.clientHeight +
+            (isElHasProperty(cursorTarget, propNames.noPadding)
+              ? null
+              : props.hoverPadding * 2),
+          backgroundColor: getStyleProp("--main-cursor-hover-clr"),
         });
         if (!isElHasProperty(cursorTarget, propNames.noParallax)) {
           TweenLite.to(cursorTarget, props.transitionSpeed, {
@@ -124,7 +142,6 @@ const contextMode = (
 
     if (isElHasProperty(cursorTarget, propNames.lift)) {
       TweenLite.to(cursor, props.transitionSpeed, {
-        delay: 0.05,
         borderRadius: borderRadius,
         width: cursorTarget.clientWidth,
         height: cursorTarget.clientHeight,
@@ -132,23 +149,6 @@ const contextMode = (
       });
       TweenLite.to(cursor, 0, {
         backgroundColor: "rgba(255,255,255,0)",
-      });
-    } else {
-      TweenLite.to(cursor, props.transitionSpeed, {
-        borderRadius:
-          borderRadius *
-          (isElHasProperty(cursorTarget, propNames.noPadding) ? 1 : 1.5),
-        width:
-          cursorTarget.clientWidth +
-          (isElHasProperty(cursorTarget, propNames.noPadding)
-            ? null
-            : props.hoverPadding * 2),
-        height:
-          cursorTarget.clientHeight +
-          (isElHasProperty(cursorTarget, propNames.noPadding)
-            ? null
-            : props.hoverPadding * 2),
-        backgroundColor: getStyleProp("--main-cursor-hover-clr"),
       });
     }
   };
