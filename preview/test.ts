@@ -1,4 +1,4 @@
-import "./styles.scss";
+import "./scss/styles.scss";
 import contextCursor from "../src";
 
 contextCursor();

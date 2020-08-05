@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;700&display=swap");
+@import "./mixins";
+
+:root {
+  --primary-clr: #b5f6ff;
+  --dark-clr: #000000;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+// Sections
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 1500px;
+  padding: 60px 80px;
+  font-family: "Roboto", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--dark-clr);
+}
+
+.navigation {
+  width: 100%;
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.title {
+  max-width: 640px;
+  &-header {
+    font-family: "Roboto Condensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 120px;
+    line-height: 96%;
+    margin: 0;
+  }
+}
+
+//
+
+.btnWrap {
+  display: flex;
+}
+
+a {
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.btn {
+  &-icon {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 0 8px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    &-ava {
+      border-radius: 100px;
+      background-image: url("../assets/ava.jpg");
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--dark-clr);
+    }
+  }
+  &-primary {
+    @include btn;
+    background: var(--primary-clr);
+  }
+  &-transparent {
+    @include btn;
+    background-color: transparent;
+  }
+}

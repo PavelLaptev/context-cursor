@@ -19,16 +19,15 @@ const contextMode = (
   let cursorTarget: HTMLElement = null;
 
   const moveCursor = (e: globalThis.MouseEvent) => {
-    const borderRadius = Number(
-      window.getComputedStyle(cursorTarget).borderRadius.slice(0, -2) as any
-    );
-
     if (!isHovered) {
       TweenLite.to(cursor, props.transitionSpeed, {
         x: e.clientX - props.radius / 2,
         y: e.clientY - props.radius / 2,
       });
     } else {
+      const borderRadius = Number(
+        window.getComputedStyle(cursorTarget).borderRadius.slice(0, -2) as any
+      );
       if (isElHasProperty(cursorTarget, propNames.lift)) {
         TweenLite.to(cursorTarget, props.transitionSpeed, {
           x: getMoveIndex(
