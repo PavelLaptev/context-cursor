@@ -18,7 +18,7 @@ const contextMode = (
   let isHovered: boolean = false;
   let cursorTarget: HTMLElement = null;
 
-  const moveCursor = (e: globalThis.MouseEvent) => {
+  const moveCursor = (e: MouseEvent) => {
     if (!isHovered) {
       TweenLite.to(cursor, props.transitionSpeed, {
         x: e.clientX - props.radius / 2,
@@ -32,13 +32,13 @@ const contextMode = (
         TweenLite.to(cursorTarget, props.transitionSpeed, {
           x: getMoveIndex(
             e.clientX,
-            cursorTarget.offsetLeft,
+            cursorTarget.getBoundingClientRect().left,
             cursorTarget.clientWidth,
             parallaxSpeed.target
           ),
           y: getMoveIndex(
             e.clientY,
-            cursorTarget.offsetTop,
+            cursorTarget.getBoundingClientRect().top,
             cursorTarget.clientHeight,
             parallaxSpeed.target
           ),
@@ -48,27 +48,21 @@ const contextMode = (
         TweenLite.to(cursor, props.transitionSpeed, {
           filter: "blur(8px)",
           x:
-            cursorTarget.offsetLeft +
-            getMoveIndex(
-              e.clientX,
-              cursorTarget.offsetLeft,
-              cursorTarget.clientWidth,
-              parallaxSpeed.target
-            ),
+            cursorTarget.getBoundingClientRect().left +
+            (e.clientX -
+              cursorTarget.getBoundingClientRect().left -
+              cursorTarget.clientWidth / 2) /
+              parallaxSpeed.cursor,
           y:
-            cursorTarget.offsetTop +
-            getMoveIndex(
-              e.clientY,
-              cursorTarget.offsetTop,
-              cursorTarget.clientHeight,
-              parallaxSpeed.target
-            ),
-          scale: 1.1,
-          backgroundColor: "rgba(0,0,0,0)",
+            cursorTarget.getBoundingClientRect().top +
+            (e.clientY -
+              cursorTarget.getBoundingClientRect().top -
+              cursorTarget.clientHeight / 2) /
+              parallaxSpeed.cursor,
           backgroundImage: `radial-gradient(circle at ${
-            e.clientX - cursorTarget.offsetLeft
+            e.clientX - cursorTarget.getBoundingClientRect().left
           }px ${
-            e.clientY - cursorTarget.offsetTop
+            e.clientY - cursorTarget.getBoundingClientRect().top
           }px, rgba(255,255,255,0.4), rgba(255,255,255,0))`,
         });
       } else {
@@ -81,7 +75,7 @@ const contextMode = (
             (isElHasProperty(cursorTarget, propNames.noParallax)
               ? 0
               : (e.clientX -
-                  cursorTarget.offsetLeft -
+                  cursorTarget.getBoundingClientRect().left -
                   cursorTarget.clientWidth / 2) /
                 parallaxSpeed.cursor),
           y:
@@ -92,7 +86,7 @@ const contextMode = (
             (isElHasProperty(cursorTarget, propNames.noParallax)
               ? 0
               : (e.clientY -
-                  cursorTarget.offsetTop -
+                  cursorTarget.getBoundingClientRect().top -
                   cursorTarget.clientHeight / 2) /
                 parallaxSpeed.cursor),
           borderRadius:
@@ -114,13 +108,13 @@ const contextMode = (
           TweenLite.to(cursorTarget, props.transitionSpeed, {
             x: -getMoveIndex(
               e.clientX,
-              cursorTarget.offsetLeft,
+              cursorTarget.getBoundingClientRect().left,
               cursorTarget.clientWidth,
               parallaxSpeed.target
             ),
             y: -getMoveIndex(
               e.clientY,
-              cursorTarget.offsetTop,
+              cursorTarget.getBoundingClientRect().top,
               cursorTarget.clientHeight,
               parallaxSpeed.target
             ),
@@ -130,7 +124,7 @@ const contextMode = (
     }
   };
 
-  const handleMouseOver = (e: globalThis.MouseEvent) => {
+  const handleMouseOver = (e: MouseEvent) => {
     isHovered = true;
     cursorTarget = e.target as HTMLElement;
     const borderRadius = Number(
@@ -145,8 +139,6 @@ const contextMode = (
         width: cursorTarget.clientWidth,
         height: cursorTarget.clientHeight,
         scale: 1.1,
-      });
-      TweenLite.to(cursor, 0, {
         backgroundColor: "rgba(255,255,255,0)",
       });
     }
@@ -177,14 +169,14 @@ const contextMode = (
   });
 
   interactElements.forEach((item) => {
-    item.addEventListener("mouseenter", (e) => {
-      handleMouseOver(e as globalThis.MouseEvent);
+    item.addEventListener("mouseenter", (e: MouseEvent) => {
+      handleMouseOver(e);
     });
   });
 
   interactElements.forEach((item) => {
-    item.addEventListener("mouseleave", (e) => {
-      handleMouseOut(e as globalThis.MouseEvent);
+    item.addEventListener("mouseleave", (e: MouseEvent) => {
+      handleMouseOut(e);
     });
   });
 };

@@ -23,6 +23,9 @@
   max-width: 1200px;
   margin: 0 auto;
   color: var(--dark-clr);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .navigation {
@@ -33,6 +36,7 @@
 
 .title {
   max-width: 640px;
+  user-select: none;
   &-header {
     font-family: "Roboto Condensed", sans-serif;
     text-transform: uppercase;
@@ -40,6 +44,13 @@
     font-size: 120px;
     line-height: 96%;
     margin: 0;
+  }
+  &-subheader {
+    font-size: 30px;
+    line-height: 140%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin: 20px 0;
   }
 }
 
@@ -63,6 +74,7 @@ a {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    overflow: hidden;
     &-ava {
       border-radius: 100px;
       background-image: url("../assets/ava.jpg");
@@ -80,5 +92,37 @@ a {
   &-transparent {
     @include btn;
     background-color: transparent;
+  }
+  &-colormode {
+    @include btn;
+    background: var(--primary-clr);
+    &:hover {
+      .moon-icon {
+        &::after {
+          left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.moon-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 30px;
+  background-color: var(--dark-clr);
+  position: relative;
+  &::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: var(--primary-clr);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    transition: left 0.2s ease-in-out;
   }
 }

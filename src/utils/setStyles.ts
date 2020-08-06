@@ -9,9 +9,9 @@ body {
   padding: 0; }
 
 .c-cursor {
+  position: fixed;
   z-index: 9999;
   pointer-events: none;
-  position: absolute;
   border-radius: 200px;
   background-color: var(--main-cursor-clr); }
 `;
