@@ -2,9 +2,10 @@
 @import "./mixins";
 
 :root {
+  --background-clr: #fff;
   --primary-clr: #b5f6ff;
   --preview-back-clr: #fffcee;
-  --dark-clr: #000000;
+  --text-clr: #000000;
   --border-width: 4px;
   --code-bck: #414246;
   --code-clr: #fff;
@@ -17,6 +18,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--background-clr);
+}
+
 // General
 a {
   display: inline-block;
@@ -24,9 +29,11 @@ a {
 }
 
 hr {
-  border-bottom: var(--border-width) solid var(--dark-clr);
+  border: none;
+  border-bottom: var(--border-width) solid var(--text-clr);
   width: 100%;
   margin: 60px 0;
+  outline: none;
 }
 
 h1 {
@@ -55,15 +62,19 @@ h3 {
 
 p {
   margin-top: 0;
-  max-width: 580px;
+  max-width: 560px;
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 150%;
+  margin-bottom: 40px;
 }
 
-code {
+code,
+pre {
   font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+  margin: 0;
 }
 
 // Sections
@@ -76,7 +87,7 @@ code {
   font-family: "Roboto", sans-serif;
   max-width: 1200px;
   margin: 0 auto;
-  color: var(--dark-clr);
+  color: var(--text-clr);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -112,12 +123,12 @@ code {
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-bottom: var(--border-width) solid var(--dark-clr);
+  border-bottom: var(--border-width) solid var(--text-clr);
   padding-bottom: 80px;
   margin-bottom: 60px;
   .preview {
     flex: 1 1 50%;
-    border: var(--border-width) solid var(--dark-clr);
+    border: var(--border-width) solid var(--text-clr);
     background-color: var(--preview-back-clr);
     min-height: 250px;
     padding: 24px;
@@ -172,7 +183,7 @@ code {
     svg {
       width: 100%;
       height: 100%;
-      fill: var(--dark-clr);
+      fill: var(--text-clr);
     }
   }
   &-primary {
@@ -189,7 +200,12 @@ code {
     &:hover {
       .moon-icon {
         &::after {
-          left: 12px;
+          left: -6px;
+        }
+        &_active {
+          &::after {
+            left: 14px;
+          }
         }
       }
     }
@@ -200,7 +216,7 @@ code {
   width: 28px;
   height: 28px;
   border-radius: 30px;
-  background-color: var(--dark-clr);
+  background-color: var(--text-clr);
   position: relative;
   &::after {
     content: "";
@@ -215,4 +231,20 @@ code {
     transform: translateY(-50%);
     transition: left 0.2s ease-in-out;
   }
+  &_active {
+    &::after {
+      left: -6px;
+    }
+  }
+}
+
+//
+.darkmode {
+  --background-clr: #282828;
+  --primary-clr: #224de8;
+  --preview-back-clr: #212121;
+  --text-clr: #f6e7bf;
+  --border-width: 4px;
+  --main-cursor-clr: rgb(255, 255, 255, 0.2);
+  --main-cursor-hover-clr: rgb(255, 255, 255, 0.1);
 }

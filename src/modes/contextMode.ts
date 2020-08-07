@@ -102,7 +102,6 @@ const contextMode = (
             (isElHasProperty(cursorTarget, propNames.noPadding)
               ? null
               : props.hoverPadding * 2),
-          backgroundColor: getStyleProp("--main-cursor-hover-clr"),
         });
         if (!isElHasProperty(cursorTarget, propNames.noParallax)) {
           TweenLite.to(cursorTarget, props.transitionSpeed, {
@@ -131,28 +130,30 @@ const contextMode = (
       window.getComputedStyle(cursorTarget).borderRadius.slice(0, -2) as any
     );
 
-    cursor.classList.add("c-cursor_active");
-
     if (isElHasProperty(cursorTarget, propNames.lift)) {
+      cursor.classList.add("c-cursor-lift_active");
       TweenLite.to(cursor, props.transitionSpeed, {
         borderRadius: borderRadius,
         width: cursorTarget.clientWidth,
         height: cursorTarget.clientHeight,
         scale: 1.1,
-        backgroundColor: "rgba(255,255,255,0)",
+        // backgroundColor: "rgba(255,255,255,0)",
       });
+    } else {
+      cursor.classList.add("c-cursor_active");
     }
   };
 
   const handleMouseOut = (e: MouseEvent) => {
     isHovered = false;
     cursor.classList.remove("c-cursor_active");
+    cursor.classList.remove("c-cursor-lift_active");
+
     TweenLite.to(cursor, props.transitionSpeed, {
       x: e.clientX - props.radius / 2,
       y: e.clientY - props.radius / 2,
       width: props.radius,
       height: props.radius,
-      backgroundColor: getStyleProp("--main-cursor-clr"),
       borderRadius: "100px",
       scale: 1,
       backgroundImage: "none",

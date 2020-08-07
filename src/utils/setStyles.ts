@@ -13,7 +13,17 @@ body {
   z-index: 9999;
   pointer-events: none;
   border-radius: 200px;
-  background-color: var(--main-cursor-clr); }
+  background-color: var(--main-cursor-clr);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.c-cursor_active {
+  background-color: var(--main-cursor-hover-clr);
+}
+
+.c-cursor-lift_active {
+  background-color: rgba(0,0,0,0);
+}
 `;
 
 const setStyles = () => {
