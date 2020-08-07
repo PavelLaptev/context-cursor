@@ -11,6 +11,7 @@
 
 <body>
   <div class="wrap">
+    <!-- Navigation -->
     <section class="navigation">
       <a href="#" class="btn-transparent" data-ccursor><i class="btn-icon"><svg fill="none"
             xmlns="http://www.w3.org/2000/svg">
@@ -29,13 +30,79 @@
       <a href="#" class="btn-colormode" data-ccursor><span>Dark Mode</span><i class="btn-icon">
           <div class="moon-icon"></div>
         </i></a>
-
     </section>
+    <!-- Header Section -->
     <section class="title">
       <h1 class="title-header">context cursor</h1>
       <h3 class="title-subheader">A cursor that takes the shape of the hovered.</h3>
     </section>
-    <h1>Hello awesome cursor</h1>
+
+    <hr>
+
+    <section class="section">
+      <h2>Demo</h2>
+      <div class="preview">
+        <div class="btn-wrap">
+          <a href="#" class="btn-primary" data-ccursor><span>Parallax button</span></a>
+          <a href="#" class="btn-transparent" data-ccursor><i class="btn-icon"><svg fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M14 0C6.265 0 0 6.423 0 14.354c0 6.352 4.008 11.717 9.572 13.619.7.125.963-.305.963-.682 0-.341-.018-1.471-.018-2.674-3.517.664-4.427-.879-4.707-1.686-.157-.413-.84-1.687-1.435-2.028-.49-.269-1.19-.933-.018-.95 1.103-.019 1.89 1.04 2.153 1.47 1.26 2.172 3.273 1.562 4.078 1.185.122-.933.49-1.561.892-1.92-3.115-.359-6.37-1.597-6.37-7.087 0-1.562.542-2.853 1.435-3.858-.14-.359-.63-1.83.14-3.804 0 0 1.173-.377 3.85 1.471a12.69 12.69 0 013.5-.484c1.19 0 2.38.161 3.5.484 2.677-1.866 3.85-1.471 3.85-1.471.77 1.974.28 3.445.14 3.804.893 1.005 1.435 2.279 1.435 3.857 0 5.509-3.273 6.729-6.387 7.088.507.448.944 1.31.944 2.655 0 1.92-.017 3.463-.017 3.948 0 .377.262.825.962.682C23.992 26.07 28 20.688 28 14.354 28 6.424 21.735 0 14 0z" />
+              </svg>
+            </i></a>
+        </div>
+      </div>
+      <div class="preview preview_last">
+        <div class="btn-wrap">
+          <a href="#" class="btn-primary" data-ccursor="lift"><span>Lift button</span></a>
+          <a href="#" class="btn-transparent" data-ccursor="lift"><i class="btn-icon"><svg fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M14 0C6.265 0 0 6.423 0 14.354c0 6.352 4.008 11.717 9.572 13.619.7.125.963-.305.963-.682 0-.341-.018-1.471-.018-2.674-3.517.664-4.427-.879-4.707-1.686-.157-.413-.84-1.687-1.435-2.028-.49-.269-1.19-.933-.018-.95 1.103-.019 1.89 1.04 2.153 1.47 1.26 2.172 3.273 1.562 4.078 1.185.122-.933.49-1.561.892-1.92-3.115-.359-6.37-1.597-6.37-7.087 0-1.562.542-2.853 1.435-3.858-.14-.359-.63-1.83.14-3.804 0 0 1.173-.377 3.85 1.471a12.69 12.69 0 013.5-.484c1.19 0 2.38.161 3.5.484 2.677-1.866 3.85-1.471 3.85-1.471.77 1.974.28 3.445.14 3.804.893 1.005 1.435 2.279 1.435 3.857 0 5.509-3.273 6.729-6.387 7.088.507.448.944 1.31.944 2.655 0 1.92-.017 3.463-.017 3.948 0 .377.262.825.962.682C23.992 26.07 28 20.688 28 14.354 28 6.424 21.735 0 14 0z" />
+              </svg>
+            </i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Usage</h2>
+      <h3>Default Setup</h3>
+      <p>
+        Copy the module into your project. In order to make the cursor works — you need to add a data tag `data-ccursor`
+        to the HTML element on which you want to use the cursor and run the function in your JS.
+      </p>
+      <div class="codepreview">
+        <code class="code">
+            <span class="code-file">
+              *.HTML
+            </span>
+            <span>
+              &lt;button data-ccursor&gt;Button&lt;/button&gt;
+            </span>
+            <span class="code-file">
+              *.JS
+            </span>
+            <span>
+              contextCursor();
+            </span>
+        </code>
+        <div class="preview">
+          <div class="btn-wrap">
+            <a href="#" class="btn-primary" data-ccursor><span>Parallax button</span></a>
+            <a href="#" class="btn-transparent" data-ccursor><i class="btn-icon"><svg fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M14 0C6.265 0 0 6.423 0 14.354c0 6.352 4.008 11.717 9.572 13.619.7.125.963-.305.963-.682 0-.341-.018-1.471-.018-2.674-3.517.664-4.427-.879-4.707-1.686-.157-.413-.84-1.687-1.435-2.028-.49-.269-1.19-.933-.018-.95 1.103-.019 1.89 1.04 2.153 1.47 1.26 2.172 3.273 1.562 4.078 1.185.122-.933.49-1.561.892-1.92-3.115-.359-6.37-1.597-6.37-7.087 0-1.562.542-2.853 1.435-3.858-.14-.359-.63-1.83.14-3.804 0 0 1.173-.377 3.85 1.471a12.69 12.69 0 013.5-.484c1.19 0 2.38.161 3.5.484 2.677-1.866 3.85-1.471 3.85-1.471.77 1.974.28 3.445.14 3.804.893 1.005 1.435 2.279 1.435 3.857 0 5.509-3.273 6.729-6.387 7.088.507.448.944 1.31.944 2.655 0 1.92-.017 3.463-.017 3.948 0 .377.262.825.962.682C23.992 26.07 28 20.688 28 14.354 28 6.424 21.735 0 14 0z" />
+                </svg>
+              </i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  -->
+    <!-- <h1>Hello awesome cursor</h1>
     <div class="btnWrap">
       <button class="btn-primary" data-ccursor="noPadding,noParallax"><span>Button</span></button>
       <button class="btn-primary" data-ccursor="noParallax"><span>Another Button</span></button>
@@ -49,7 +116,7 @@
 
     <a href="##" data-ccursor="">
       This is a link
-    </a>
+    </a> -->
   </div>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>

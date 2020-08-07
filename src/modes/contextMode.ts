@@ -148,6 +148,8 @@ const contextMode = (
     isHovered = false;
     cursor.classList.remove("c-cursor_active");
     TweenLite.to(cursor, props.transitionSpeed, {
+      x: e.clientX - props.radius / 2,
+      y: e.clientY - props.radius / 2,
       width: props.radius,
       height: props.radius,
       backgroundColor: getStyleProp("--main-cursor-clr"),
@@ -164,8 +166,12 @@ const contextMode = (
     });
   };
 
-  document.addEventListener("mousemove", (e) => {
+  document.addEventListener("mousemove", (e: MouseEvent) => {
     moveCursor(e);
+  });
+
+  document.addEventListener("mousewheel", (e: WheelEvent) => {
+    handleMouseOut(e);
   });
 
   interactElements.forEach((item) => {

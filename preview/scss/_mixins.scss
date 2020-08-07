@@ -1,5 +1,5 @@
 @mixin btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: bold;
@@ -10,7 +10,6 @@
   border: none;
   border-radius: 8px;
   align-self: flex-start;
-  margin-bottom: 20px;
   margin-right: 12px;
   text-decoration: none;
   color: var(--dark-clr);

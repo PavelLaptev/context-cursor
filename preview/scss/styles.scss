@@ -1,15 +1,69 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap");
 @import "./mixins";
 
 :root {
   --primary-clr: #b5f6ff;
+  --preview-back-clr: #fffcee;
   --dark-clr: #000000;
+  --border-width: 4px;
+  --code-bck: #414246;
+  --code-clr: #fff;
+  --code-file-clr: #ffb68c;
 }
 
 *,
 *::after,
 *::before {
   box-sizing: border-box;
+}
+
+// General
+a {
+  display: inline-block;
+  align-self: flex-start;
+}
+
+hr {
+  border-bottom: var(--border-width) solid var(--dark-clr);
+  width: 100%;
+  margin: 60px 0;
+}
+
+h1 {
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  font-size: 80px;
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  font-size: 60px;
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  font-size: 30px;
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+p {
+  margin-top: 0;
+  max-width: 580px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+code {
+  font-family: "Roboto Mono", monospace;
 }
 
 // Sections
@@ -54,15 +108,51 @@
   }
 }
 
-//
-
-.btnWrap {
+.section {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  border-bottom: var(--border-width) solid var(--dark-clr);
+  padding-bottom: 80px;
+  margin-bottom: 60px;
+  .preview {
+    flex: 1 1 50%;
+    border: var(--border-width) solid var(--dark-clr);
+    background-color: var(--preview-back-clr);
+    min-height: 250px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_last {
+      border-top: 0;
+    }
+  }
+  .code {
+    flex: 1 1 50%;
+    background-color: var(--code-bck);
+    padding: 16px 32px;
+    color: var(--code-clr);
+    display: flex;
+    flex-direction: column;
+    span {
+      margin-bottom: 16px;
+    }
+    &-file {
+      margin: 16px 0;
+      font-weight: 700;
+      color: var(--code-file-clr);
+    }
+  }
+  .codepreview {
+    display: flex;
+  }
 }
 
-a {
-  display: inline-block;
-  align-self: flex-start;
+//
+
+.btn-wrap {
+  display: flex;
 }
 
 .btn {
@@ -99,7 +189,7 @@ a {
     &:hover {
       .moon-icon {
         &::after {
-          left: 10px;
+          left: 12px;
         }
       }
     }
