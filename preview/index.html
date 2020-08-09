@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Webpack 4 Typescript boilerplate</title>
+  <title>Context Cursor</title>
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>" />
 </head>
 
@@ -13,28 +13,33 @@
   <div class="wrap">
     <!-- Navigation -->
     <section class="navigation">
-      <a href="#" class="btn-transparent" data-ccursor><i class="btn-icon"><svg fill="none"
+      <a href="#" class="btn-transparent" data-ccursor title="Article on Medium"><i class="btn-icon"><svg fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M1.348 3.555C0 5.573 0 8.382 0 14s0 8.427 1.348 10.445a8 8 0 002.207 2.207C5.573 28 8.382 28 14 28s8.427 0 10.445-1.348a8.001 8.001 0 002.207-2.207C28 22.427 28 19.618 28 14s0-8.427-1.348-10.445a8 8 0 00-2.207-2.207C22.427 0 19.618 0 14 0S5.573 0 3.555 1.348a8 8 0 00-2.207 2.207zm23.5 17.893v.33h-8.54v-.33l1.759-1.535c.173-.156.173-.202.173-.44v-8.907l-4.89 11.175h-.662L6.994 10.566v7.49a.975.975 0 00.316.86l2.288 2.496v.329H3.111v-.33L5.4 18.917a.934.934 0 00.294-.86v-8.66a.724.724 0 00-.273-.641L3.386 6.552v-.33H9.7l4.88 9.63 4.291-9.63h6.019v.33L23.15 8.05a.437.437 0 00-.194.44V19.51a.437.437 0 00.194.44l1.697 1.498z" />
           </svg>
         </i></a>
-      <a href="https://github.com/PavelLaptev/context-cursor" target="_blank" class="btn-transparent" data-ccursor><i
-          class="btn-icon"><svg fill="none" xmlns="http://www.w3.org/2000/svg">
+      <a href="https://github.com/PavelLaptev/context-cursor" target="_blank" class="btn-transparent" data-ccursor
+        title="GitHub Repository"><i class="btn-icon"><svg fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M14 0C6.265 0 0 6.423 0 14.354c0 6.352 4.008 11.717 9.572 13.619.7.125.963-.305.963-.682 0-.341-.018-1.471-.018-2.674-3.517.664-4.427-.879-4.707-1.686-.157-.413-.84-1.687-1.435-2.028-.49-.269-1.19-.933-.018-.95 1.103-.019 1.89 1.04 2.153 1.47 1.26 2.172 3.273 1.562 4.078 1.185.122-.933.49-1.561.892-1.92-3.115-.359-6.37-1.597-6.37-7.087 0-1.562.542-2.853 1.435-3.858-.14-.359-.63-1.83.14-3.804 0 0 1.173-.377 3.85 1.471a12.69 12.69 0 013.5-.484c1.19 0 2.38.161 3.5.484 2.677-1.866 3.85-1.471 3.85-1.471.77 1.974.28 3.445.14 3.804.893 1.005 1.435 2.279 1.435 3.857 0 5.509-3.273 6.729-6.387 7.088.507.448.944 1.31.944 2.655 0 1.92-.017 3.463-.017 3.948 0 .377.262.825.962.682C23.992 26.07 28 20.688 28 14.354 28 6.424 21.735 0 14 0z" />
           </svg>
         </i></a>
-      <a href="https://pavellaptev.github.io/" target="_blank" class="btn-transparent" data-ccursor><i
-          class="btn-icon btn-icon-ava"></i></a>
-      <a href="#" class="btn-colormode" id="darkmode-button" data-ccursor><span>Dark Mode</span><i class="btn-icon">
+      <a href="https://pavellaptev.github.io/" target="_blank" class="btn-transparent" data-ccursor
+        title="My Website"><i class="btn-icon btn-icon-ava"></i></a>
+      <a href="#" class="btn-colormode" id="darkmode-button" data-ccursor title="Switch color modes">
+        <span>Dark Mode</span>
+        <i class="btn-icon">
           <div class="moon-icon" id="moon-icon"></div>
-        </i></a>
+        </i>
+      </a>
     </section>
     <!-- Header Section -->
     <section class="title">
       <h1 class="title-header">context cursor</h1>
-      <h3 class="title-subheader">A cursor that takes the shape of the hovered.</h3>
+      <h3 class="title-subheader">A cursor that takes the shape of the hovered element. Inspired by <a
+          href="https://developer.apple.com/videos/play/wwdc2020/10640" data-ccursor target="_blank"> iPad Pointer</a>.
+      </h3>
     </section>
 
     <hr>

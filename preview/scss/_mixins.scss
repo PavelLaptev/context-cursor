@@ -6,15 +6,19 @@
   font-size: 24px;
   text-transform: uppercase;
   padding: 18px 14px;
-  height: 64px;
   border: none;
   border-radius: 8px;
   align-self: flex-start;
-  margin-right: 12px;
   text-decoration: none;
   color: var(--dark-clr);
+  margin-right: 12px;
+  margin-bottom: 12px;
   span {
+    text-align: center;
     padding: 0 8px;
+  }
+  @media screen and (max-width: 800px) {
+    padding: 14px 8px;
   }
 }
 

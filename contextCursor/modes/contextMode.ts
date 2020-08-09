@@ -15,15 +15,18 @@ const contextMode = (
   let cursorTarget: HTMLElement = null;
 
   const moveCursor = (e: MouseEvent) => {
+    // If element is not hovered
     if (!isHovered) {
       TweenLite.to(cursor, props.transitionSpeed, {
         x: e.clientX - props.radius / 2,
         y: e.clientY - props.radius / 2,
       });
+      // If eleemnt is hovered
     } else {
       const borderRadius = Number(
         window.getComputedStyle(cursorTarget).borderRadius.slice(0, -2) as any
       );
+      // For "LIFT" mode
       if (isElHasProperty(cursorTarget, propNames.lift)) {
         TweenLite.to(cursorTarget, props.transitionSpeed, {
           x: getMoveIndex(
@@ -61,6 +64,7 @@ const contextMode = (
             e.clientY - cursorTarget.getBoundingClientRect().top
           }px, rgba(255,255,255,0.4), rgba(255,255,255,0))`,
         });
+        // For default "PARALLAX" mode
       } else {
         TweenLite.to(cursor, props.transitionSpeed, {
           x:
@@ -99,6 +103,7 @@ const contextMode = (
               ? null
               : props.hoverPadding * 2),
         });
+        // For "NO PARALLAX" property
         if (!isElHasProperty(cursorTarget, propNames.noParallax)) {
           TweenLite.to(cursorTarget, props.transitionSpeed, {
             x: -getMoveIndex(
@@ -133,7 +138,6 @@ const contextMode = (
         width: cursorTarget.clientWidth,
         height: cursorTarget.clientHeight,
         scale: 1.1,
-        // backgroundColor: "rgba(255,255,255,0)",
       });
     } else {
       cursor.classList.add("c-cursor_active");
@@ -163,12 +167,13 @@ const contextMode = (
     });
   };
 
-  document.addEventListener("mousemove", (e: MouseEvent) => {
-    moveCursor(e);
-  });
-
+  // Event listeners
   document.addEventListener("mousewheel", (e: WheelEvent) => {
     handleMouseOut(e);
+  });
+
+  document.addEventListener("mousemove", (e: MouseEvent) => {
+    moveCursor(e);
   });
 
   interactElements.forEach((item) => {

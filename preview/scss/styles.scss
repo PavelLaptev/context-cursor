@@ -10,6 +10,8 @@
   --code-bck: #414246;
   --code-clr: #fff;
   --code-file-clr: #ffb68c;
+  --link-clr: #f45;
+  --link-hover-clr: #224de8;
 }
 
 *,
@@ -18,7 +20,12 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background: var(--primary-clr);
+}
+
 body {
+  overflow-x: hidden;
   background-color: var(--background-clr);
 }
 
@@ -42,6 +49,9 @@ h1 {
   font-size: 80px;
   margin: 0;
   margin-bottom: 32px;
+  @media screen and (max-width: 800px) {
+    font-size: 60px;
+  }
 }
 
 h2 {
@@ -50,6 +60,9 @@ h2 {
   font-size: 60px;
   margin: 0;
   margin-bottom: 24px;
+  @media screen and (max-width: 800px) {
+    font-size: 50px;
+  }
 }
 
 h3 {
@@ -91,12 +104,16 @@ pre {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  @media screen and (max-width: 800px) {
+    padding: 30px 20px;
+  }
 }
 
 .navigation {
   width: 100%;
   display: flex;
   margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -109,6 +126,9 @@ pre {
     font-size: 120px;
     line-height: 96%;
     margin: 0;
+    @media screen and (max-width: 800px) {
+      font-size: 80px;
+    }
   }
   &-subheader {
     font-size: 30px;
@@ -116,6 +136,18 @@ pre {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     margin: 20px 0;
+    text-transform: unset;
+    @media screen and (max-width: 800px) {
+      font-size: 24px;
+    }
+  }
+  a {
+    color: var(--link-clr);
+    transition: color 0.2s ease-in-out;
+    border-radius: 4px;
+    &:hover {
+      color: var(--text-clr);
+    }
   }
 }
 
@@ -138,6 +170,10 @@ pre {
     &_last {
       border-top: 0;
     }
+    @media screen and (max-width: 800px) {
+      justify-content: flex-start;
+      padding: 32px;
+    }
   }
   .code {
     flex: 1 1 50%;
@@ -146,6 +182,7 @@ pre {
     color: var(--code-clr);
     display: flex;
     flex-direction: column;
+    overflow-x: scroll;
     span {
       margin-bottom: 16px;
     }
@@ -157,6 +194,9 @@ pre {
   }
   .codepreview {
     display: flex;
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -164,6 +204,10 @@ pre {
 
 .btn-wrap {
   display: flex;
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+    flex-direction: column;
+  }
 }
 
 .btn {
@@ -207,6 +251,11 @@ pre {
             left: 14px;
           }
         }
+      }
+    }
+    @media screen and (max-width: 800px) {
+      span {
+        display: none;
       }
     }
   }

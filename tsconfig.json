@@ -6,6 +6,6 @@
     "module": "commonjs",
     "target": "es5",
     "allowJs": true,
-    "typeRoots": ["./src/types/", "node_modules/@types"]
+    "typeRoots": ["contextCursor/types", "node_modules/@types"]
   }
 }
