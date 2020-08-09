@@ -73,8 +73,8 @@ module.exports = {
       filename: "style.css",
     }),
     new HtmlWebpackPlugin({
-      inject: false,
       hash: false,
+      favicon: "./" + preview_Path + "/assets/favico/ico-64x64.png",
       template: "./" + preview_Path + "/index.html",
       filename: "index.html",
     }),
