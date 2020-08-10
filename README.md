@@ -10,4 +10,4 @@
 
 ## Demo and usage
 
-#### 👉🏽 [pavellaptev.github.io/context-cursor](https://pavellaptev.github.io/context-cursor/) 👈🏽
+## 👉🏽 [pavellaptev.github.io/context-cursor](https://pavellaptev.github.io/context-cursor/) 👈🏽
