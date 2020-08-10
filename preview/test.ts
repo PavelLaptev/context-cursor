@@ -14,9 +14,11 @@ const strings = {
 };
 
 darkmodeBtn.addEventListener("click", (e) => {
-  darkmodeBtn.childNodes[1].textContent === strings.darkmode
-    ? (darkmodeBtn.childNodes[1].textContent = strings.lightmode)
-    : (darkmodeBtn.childNodes[1].textContent = strings.darkmode);
+  darkmodeBtn.getElementsByTagName("span")[0].textContent === strings.darkmode
+    ? (darkmodeBtn.getElementsByTagName("span")[0].textContent =
+        strings.lightmode)
+    : (darkmodeBtn.getElementsByTagName("span")[0].textContent =
+        strings.darkmode);
   document.body.classList.toggle("darkmode");
   moonIcon.classList.toggle("moon-icon_active");
 });
