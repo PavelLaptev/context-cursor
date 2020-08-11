@@ -93,7 +93,7 @@ pre {
 // Sections
 
 .wrap {
-  display: flex;
+  display: grid;
   flex-direction: column;
   height: 1500px;
   padding: 60px 80px;
@@ -185,6 +185,7 @@ pre {
     overflow-x: scroll;
     span {
       margin-bottom: 16px;
+      line-break: anywhere;
     }
     &-file {
       margin: 16px 0;
